@@ -1,0 +1,211 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Data Cleaning in SQL</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    </head>
+    <body class="is-preload">
+
+        <!-- Wrapper -->
+        <div id="wrapper">
+
+            <!-- Header -->
+            <header id="header">
+                <a href="index - Copy.html" class="logo">Home</a>
+            </header>
+
+            <!-- Nav -->
+            <nav id="nav">
+                <ul class="links">
+                    <li><a href="#">Data Cleaning in SQL</a></li>
+                </ul>
+                <ul class="icons">
+                    <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                    <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                    <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                    <li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+                </ul>
+            </nav>
+
+            <!-- Main -->
+            <div id="main">
+
+                <!-- Post -->
+                <section class="post">
+                    <header class="major">
+                        <span class="date">September 7, 2024</span>
+                        <h1>Data Cleaning in SQL</h1>
+                        <a href="https://github.com/AlexanderHolland/Portfolio-Projects/blob/main/Nashville%20Housing.sql" class="image main"><img src="images/house 2.jpg" alt="" /></a>
+                    </header>
+                    
+                    <h3>SQL Script Link:</h3>
+                    <p><a href="https://github.com/AlexanderHolland/Portfolio-Projects/blob/main/Nashville%20Housing.sql">View SQL Script</a></p>
+                    
+                    <p>This project focuses on cleaning and standardizing data in a SQL database. The following steps outline the process used to clean and prepare the data for analysis.</p>
+                    
+                    <h2>Objective</h2>
+                    <p>To clean and standardize data in the NashvilleHousing database, including formatting dates, handling missing values, breaking out addresses into separate columns, and removing duplicates.</p>
+                    
+                    <h2>Steps Followed:</h2>
+                    
+                    <h3>1. Standardize Date Format:</h3>
+                    <pre><code class="sql">-- View existing SaleDate format
+SELECT SaleDate
+FROM dbo.NashvilleHousing
+
+-- Convert SaleDate to a standard date format
+SELECT CONVERT(DATE, SaleDate)
+FROM dbo.NashvilleHousing
+
+-- Update SaleDate column to standardized date format
+UPDATE dbo.NashvilleHousing
+SET SaleDate = CONVERT(DATE, SaleDate)
+
+-- Add a new column for standardized SaleDate
+ALTER TABLE dbo.NashvilleHousing
+ADD SaleDateConverted DATE
+
+-- Populate the new SaleDateConverted column
+UPDATE dbo.NashvilleHousing
+SET SaleDateConverted = CONVERT(DATE, SaleDate)
+
+-- Verify the changes
+SELECT SaleDate, SaleDateConverted
+FROM dbo.NashvilleHousing
+</code></pre>
+                    
+                    <h3>2. Populate Property Address Data:</h3>
+                    <pre><code class="sql">-- Find rows with missing PropertyAddress
+SELECT *
+FROM NashvilleHousing
+WHERE PropertyAddress IS NULL
+ORDER BY ParcelID
+
+-- Join table to fill missing PropertyAddress values
+SELECT a.ParcelID, a.PropertyAddress, b.ParcelID, b.PropertyAddress, ISNULL(a.PropertyAddress, b.PropertyAddress)
+FROM NashvilleHousing a
+INNER JOIN NashvilleHousing b
+ON a.ParcelID = b.ParcelID
+WHERE a.UniqueID <> b.UniqueID
+AND a.PropertyAddress IS NULL
+
+-- Update missing PropertyAddress values
+UPDATE a
+SET PropertyAddress = ISNULL(a.PropertyAddress, b.PropertyAddress)
+FROM NashvilleHousing a
+INNER JOIN NashvilleHousing b
+ON a.ParcelID = b.ParcelID
+WHERE a.UniqueID <> b.UniqueID
+AND a.PropertyAddress IS NULL
+</code></pre>
+                    
+                    <h3>3. Break Out Address into Individual Columns (Address, City, State):</h3>
+                    <pre><code class="sql">-- Extract Address component
+SELECT SUBSTRING(PropertyAddress, 1, CHARINDEX(',', PropertyAddress)-1) AS Address,
+SUBSTRING(PropertyAddress, CHARINDEX(',', PropertyAddress) + 1, LEN(PropertyAddress)) AS Address
+FROM NashvilleHousing
+
+-- Add new columns for Address, City, State
+ALTER TABLE NashvilleHousing
+ADD PropertySplitAddress NVARCHAR(255)
+
+-- Update new Address column
+UPDATE NashvilleHousing
+SET PropertySplitAddress = SUBSTRING(PropertyAddress, 1, CHARINDEX(',', PropertyAddress)-1)
+
+ALTER TABLE NashvilleHousing 
+ADD PropertySplitCity NVARCHAR(255)
+
+-- Update new City column
+UPDATE NashvilleHousing
+SET PropertySplitCity = SUBSTRING(PropertyAddress, CHARINDEX(',', PropertyAddress) + 1, LEN(PropertyAddress))
+
+-- Handle OwnerAddress similarly
+SELECT OwnerAddress
+FROM NashvilleHousing
+
+-- Split OwnerAddress into Address, City, State
+SELECT 
+PARSENAME(REPLACE(OwnerAddress,',','.'), 3) AS OwnerSplitAddress,
+PARSENAME(REPLACE(OwnerAddress,',','.'), 2) AS OwnerSplitCity,
+PARSENAME(REPLACE(OwnerAddress, ',','.'), 1) AS OwnerSplitState
+FROM NashvilleHousing
+
+-- Add and populate new OwnerAddress columns
+ALTER TABLE NashvilleHousing
+ADD OwnerSplitAddress NVARCHAR(255)
+
+UPDATE NashvilleHousing
+SET OwnerSplitAddress = PARSENAME(REPLACE(OwnerAddress,',','.'), 3)
+
+ALTER TABLE NashvilleHousing
+ADD OwnerSplitCity NVARCHAR(255)
+
+UPDATE NashvilleHousing
+SET OwnerSplitCity = PARSENAME(REPLACE(OwnerAddress,',','.'), 2)
+
+ALTER TABLE NashvilleHousing 
+ADD OwnerSplitState NVARCHAR(255)
+
+UPDATE NashvilleHousing
+SET OwnerSplitState = PARSENAME(REPLACE(OwnerAddress, ',','.'), 1)
+</code></pre>
+                    
+                    <h3>4. Change Y and N to Yes and No in "Sold as Vacant" Field:</h3>
+                    <pre><code class="sql">-- Check current values
+SELECT DISTINCT(SoldAsVacant), COUNT(SoldAsVacant)
+FROM NashvilleHousing
+GROUP BY SoldAsVacant
+
+-- Convert Y/N to Yes/No
+UPDATE NashvilleHousing
+SET SoldAsVacant = CASE 
+	WHEN SoldAsVacant = 0 THEN 'No'
+	WHEN SoldAsVacant = 1 THEN 'Yes'
+	END
+</code></pre>
+                    
+                    <h3>5. Remove Duplicates:</h3>
+                    <pre><code class="sql">-- Use CTE to identify duplicates
+WITH RowNumCTE AS(
+SELECT n.*,
+	ROW_NUMBER() OVER (
+	PARTITION BY ParcelID, 
+		PropertyAddress, 
+		SalePrice, 
+		SaleDate, 
+		LegalReference 
+		ORDER BY 
+		UniqueID) Row_Num
+FROM NashvilleHousing n
+)
+-- Delete duplicate rows
+DELETE
+FROM RowNumCTE
+WHERE Row_Num > 1
+</code></pre>
+                    
+                    <h3>6. Delete Unused Columns:</h3>
+                    <pre><code class="sql">-- Drop unused columns
+ALTER TABLE NashvilleHousing
+DROP COLUMN OwnerAddress, TaxDistrict, PropertyAddress, SaleDate
+</code></pre>
+
+                </section>
+                
+            </div>
+
+        </div>
+
+        <!-- Scripts -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+
+    </body>
+</html>

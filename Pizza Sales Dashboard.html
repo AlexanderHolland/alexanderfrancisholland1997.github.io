@@ -1,0 +1,327 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Generic Page - Massively by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index - Copy.html" class="logo">Home</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+						</ul>
+						<ul class="icons">
+							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								
+								<!DOCTYPE html>
+<html lang="en">
+<header>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Sales Dashboard</title>
+	<h1>Pizza Sales Dashboard</h1>
+	<a href="https://app.powerbi.com/view?r=eyJrIjoiNDBmNDQwZWMtZTA5NS00NGZlLThlYWYtZWRmYWEyNDgwNGVlIiwidCI6ImQyZWNmMmFkLTQ3ZTQtNDgxMi1hODAzLWVmMGZiNGNkODBmMiJ9" class="image main"><img src="images/Dash pizza 1.png" alt="" /></a>
+</header>
+<body>
+
+    <h3>Dashboard Link:</h3>
+    <p><a href="https://app.powerbi.com/view?r=eyJrIjoiNDBmNDQwZWMtZTA5NS00NGZlLThlYWYtZWRmYWEyNDgwNGVlIiwidCI6ImQyZWNmMmFkLTQ3ZTQtNDgxMi1hODAzLWVmMGZiNGNkODBmMiJ9">View Dashboard</a></p>
+
+    <h3>SQL Link:</h3>
+    <p><a href="https://github.com/AlexanderHolland/Portfolio-Projects/blob/main/Pizza%20Sales.sql">View SQL Script</a></p>
+
+    <p>Our company is focused on pizza sales, and to effectively track and analyze our performance, we need a comprehensive Pizza Sales Dashboard in Power BI.</p>
+
+    <h3><b>Objective</b>:</h3>
+    <p>Design and develop a dynamic, interactive Pizza Sales Dashboard that visualizes critical KPIs related to pizza sales. The dashboard will help us understand our sales performance over time and make data-driven decisions.</p>
+
+    <h3><b>Problem Statement</b>:</h3>
+    <p>The dashboard should provide real-time insights into key performance indicators for our pizza sales data. This will enable informed decisions, monitor progress, and identify trends and growth opportunities.</p>
+
+    <h3>Key Sales Metrics:</h3>
+    <ul>
+        <li><b>Total Revenue:</b> Sum of all pizza order prices.</li>
+        <li><b>Average Order Value:</b> Average spend per order.</li>
+        <li><b>Total Pizzas Sold:</b> Total quantity of pizzas sold.</li>
+        <li><b>Total Orders:</b> Total number of orders placed.</li>
+        <li><b>Average Pizzas Per Order:</b> Average number of pizzas per order.</li>
+    </ul>
+
+    <h3>Chart Requirements:</h3>
+    <ul>
+        <li><b>Weekly Trend for Total Orders:</b>
+            <p>Bar chart illustrating weekly total order trends. Highlighted the day with the most sales using conditional formatting.</p>
+        </li>
+        <li><b>Monthly Trend for Total Orders:</b>
+            <p>Line chart showing total orders by month with markers for clear identification of trends.</p>
+        </li>
+        <li><b>Percentage of Sales by Pizza Category:</b>
+            <p>Pie chart displaying sales distribution across pizza categories.</p>
+        </li>
+        <li><b>Percentage of Sales by Pizza Size:</b>
+            <p>Pie chart representing sales distribution by pizza size.</p>
+        </li>
+        <li><b>Total Pizzas Sold by Pizza Category:</b>
+            <p>Funnel chart showing pizzas sold per category.</p>
+        </li>
+        <li><b>Top 5 Best Sellers by Revenue, Quantity, and Orders:</b>
+            <p>Bar chart highlighting the top 5 best-selling pizzas. Used conditional formatting for emphasis.</p>
+        </li>
+        <li><b>Bottom 5 Worst Sellers by Revenue, Quantity, and Orders:</b>
+            <p>Bar chart showcasing the bottom 5 worst-selling pizzas with conditional formatting.</p>
+        </li>
+    </ul>
+
+    <h3>Steps Followed:</h3>
+    <ol>
+        <li><b>Data Quality Check / Data Cleaning:</b>
+            <ul>
+                <li><b>Load Data:</b> Imported the dataset from SQL Server into Power BI Desktop.
+                    <br><img src="https://github.com/user-attachments/assets/61c2b3a8-12e1-4a6f-a98f-b64d1481ee8d" alt="SQL Server">
+                </li>
+                <li><b>Data Quality Check:</b> Used Power Query Editor to remove null values and filter rows.
+                    <br><img src="https://github.com/user-attachments/assets/bb898399-fecc-4351-8f5d-1400550210bf" alt="Data Preview">
+                </li>
+                <li><b>Replace Values:</b> Standardized data in the 'pizza_size' column using Power Query.
+                    <br><img src="https://github.com/user-attachments/assets/2c805197-80ee-47c8-aa49-7382b0302743" alt="Replace Value">
+                </li>
+            </ul>
+        </li>
+
+        <li><b>Enhanced Data Visualization with DAX:</b>
+            <ul>
+                <li><b>Create Day of the Week Column:</b> Used Power Query’s Add Column to extract the day name from the order date.
+                    <br><img src="https://github.com/user-attachments/assets/37ed8724-9213-409d-b6e6-7d929abb4b53" alt="Creating Date Name">
+                </li>
+            </ul>
+        </li>
+
+        <li><b>DAX Calculations:</b>
+            <ul>
+                <li>Created a column for month ordering:
+                    <pre><code>Month Order = MONTH(pizza_sales[order_date])</code></pre>
+                </li>
+                <li>Shortened day and month names:
+                    <pre><code>Order Day = UPPER(LEFT(pizza_sales[Day Name], 3))
+Order Month = UPPER(LEFT(pizza_sales[Month Name], 3))</code></pre>
+                </li>
+                <li>Created custom day names using DAX:
+                    <pre><code>Week Day = FORMAT(pizza_sales[order_date], "DDDD")</code></pre>
+                </li>
+                <li>Ordered weekdays numerically:
+                    <pre><code>Week Order = WEEKDAY(pizza_sales[order_date])</code></pre>
+                </li>
+            </ul>
+        </li>
+
+        <li><b>KPIs and Measures:</b>
+            <ul>
+                <li><b>Total Revenue:</b>
+                    <pre><code>Total Revenue = SUM(pizza_sales[total_price])</code></pre>
+                    <br><img src="https://github.com/user-attachments/assets/e0f5e1be-9892-476b-9af4-b47e74449d82" alt="Total Revenue">
+                </li>
+                <li><b>Average Order Value:</b>
+                    <pre><code>Average Order Value = [Total Revenue] / [Total Orders]</code></pre>
+                    <br><img src="https://github.com/user-attachments/assets/f7a1d37e-6ec1-44e1-80c1-f1e184f845c8" alt="Average Order Value">
+                </li>
+                <li><b>Total Pizzas Sold:</b>
+                    <pre><code>Total Pizzas Sold = SUM(pizza_sales[quantity])</code></pre>
+                    <br><img src="https://github.com/user-attachments/assets/d7d131a8-a207-497c-ae8f-15121782ec1b" alt="Total Pizzas Sold">
+                </li>
+                <li><b>Total Orders:</b>
+                    <pre><code>Total Orders = DISTINCTCOUNT(pizza_sales[order_id])</code></pre>
+                    <br><img src="https://github.com/user-attachments/assets/7d3cced7-e238-47d4-87f4-1f556e0d73ed" alt="Total Orders">
+                </li>
+                <li><b>Average Pizzas Per Order:</b>
+                    <pre><code>Average Pizzas Per Order = [Total Pizzas Sold] / [Total Orders]</code></pre>
+                    <br><img src="https://github.com/user-attachments/assets/759e9e12-aeb2-4254-9949-9788fadccca0" alt="Average Pizzas Per Order">
+                </li>
+            </ul>
+        </li>
+
+        <li><b>Chart Requirements:</b>
+            <ul>
+                <li><b>Weekly Trend for Total Orders:</b>
+                    <p>We created a bar chart that showed the weekly total order trend. Conditional formatting was used to highlight the day with the highest sales.
+                        <br><img src="https://github.com/user-attachments/assets/1fcc4fa6-40b8-4fc4-8106-f26e8f7e429d" alt="Daily Trend">
+                    </p>
+                </li>
+                <li><b>Monthly Trend for Total Orders:</b>
+                    <p>A line chart was created to illustrate total orders by month. Background and data markers were added for clarity.
+                        <br><img src="https://github.com/user-attachments/assets/61f848fc-acd6-40cf-8290-29f8a438572d" alt="Area Chart">
+                    </p>
+                </li>
+                <li><b>Percentage of Sales by Pizza Category:</b>
+                    <p>We generated a pie chart to display the distribution of sales across pizza categories.
+                        <br><img src="https://github.com/user-attachments/assets/257f28df-bb17-4fed-a694-1f77dae5fa5b" alt="Sales by Pizza Category">
+                    </p>
+                </li>
+                <li><b>Percentage of Sales by Pizza Size:</b>
+                    <p>A pie chart was created to represent the percentage of sales by pizza size.
+                        <br><img src="https://github.com/user-attachments/assets/52d0ddb0-15b7-4fe3-8ce3-a150541fbc7f" alt="Sales by Pizza Size">
+                    </p>
+                </li>
+                <li><b>Total Pizzas Sold by Pizza Category:</b>
+                    <p>A funnel chart was created to present the total number of pizzas sold for each pizza category.
+                        <br><img src="https://github.com/user-attachments/assets/a8cf5675-36f7-4b44-82e1-f1f57feff60f" alt="Total Pizzas Sold by Category">
+                    </p>
+                </li>
+                <li><b>Top 5/Bottom 5 Best Sellers by Revenue, Total Quantity, and Total Orders:</b>
+                    <p>A bar chart was created to highlight the top and bottom 5 selling pizzas based on Revenue, Total Quantity, and Total Orders. Conditional formatting was used to effectively visualize the data.
+                        <br><img src="https://github.com/user-attachments/assets/562db75c-c39d-448f-b742-1d0921f66ef7" alt="Top Bottom 5">
+                    </p>
+                </li>
+            </ul>
+        </li>
+
+        <li><b>Creating Sliders:</b>
+            <ul>
+                <li><b>Category Slider:</b> A category slider was created for the dashboard to allow dynamic, real-time changes for analysis based on category.
+                    <br><img src="https://github.com/user-attachments/assets/5339c4aa-806f-4178-b9e3-2618d8be6897" alt="Category Slicer">
+                </li>
+                <li><b>Date Slider:</b> A date slider was created to enable data filtering in real-time, allowing for alternative analysis.
+                    <br><img src="https://github.com/user-attachments/assets/fe296365-8316-427e-9b79-7f377731e092" alt="Date Slicer">
+                </li>
+            </ul>
+        </li>
+
+        <li><b>Creating Navigation Buttons:</b>
+            <p>Implemented "Home" and "Best/Worst Seller" buttons to enable navigation between different pages.
+                <br><img src="https://github.com/user-attachments/assets/bd5e7d06-dd31-45e6-a3b9-043ffb1abb58" alt="Navigational Buttons">
+            </p>
+        </li>
+    </ol>
+
+    <h3>Snapshot of Dashboard (Power BI Desktop):</h3>
+    <h4>Overview:</h4>
+    <img src="https://github.com/user-attachments/assets/10e6e641-d83a-4f87-8691-ecb8147148b8" alt="Dashboard Overview">
+
+    <h4>Details:</h4>
+    <img src="https://github.com/user-attachments/assets/267ab106-8f5e-4b62-8d3f-c3edb1d709fd" alt="Dashboard Details">
+
+    <h3>Insights:</h3>
+    <ul>
+        <li><b>Busiest Day:</b> Friday had the highest number of pizza orders, with 3,500 total orders.</li>
+        <li><b>Busiest Month:</b> July saw the most orders, with 1,935 orders, showing a gradual increase from February to July.</li>
+        <li><b>Pizza Category Insights:</b> Classic Pizzas made up 26.91% of total sales, followed by Supreme (25.46%) and Chicken (23.96%).</li>
+        <li><b>Pizza Size Breakdown:</b> Large pizzas dominated sales, followed by Medium (30.49%).</li>
+    </ul>
+
+    <h3>Top Performers:</h3>
+    <ul>
+        <li><b>Top Pizza by Revenue:</b> Thai Chicken Pizza - $43,000</li>
+        <li><b>Top Pizza by Quantity:</b> Classic Deluxe - 2,500 pizzas</li>
+        <li><b>Top Pizza by Total Orders:</b> Classic Deluxe - 2,300 orders</li>
+    </ul>
+
+    <h3>Bottom Performers:</h3>
+    <ul>
+        <li><b>Bottom Pizza by Revenue:</b> Brie Carre - $12,000</li>
+        <li><b>Bottom Pizza by Quantity:</b> Brie Carre - 490 pizzas</li>
+        <li><b>Bottom Pizza by Total Orders:</b> Brie Carre - 480 orders</li>
+    </ul>
+</body>
+</html>
+
+								
+
+
+								
+							</section>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section>
+							<form method="post" action="#">
+								<div class="fields">
+									<div class="field">
+										<label for="name">Name</label>
+										<input type="text" name="name" id="name" />
+									</div>
+									<div class="field">
+										<label for="email">Email</label>
+										<input type="text" name="email" id="email" />
+									</div>
+									<div class="field">
+										<label for="message">Message</label>
+										<textarea name="message" id="message" rows="3"></textarea>
+									</div>
+								</div>
+								<ul class="actions">
+									<li><input type="submit" value="Send Message" /></li>
+								</ul>
+							</form>
+						</section>
+						<section class="split contact">
+							<section class="alt">
+								<h3>Address</h3>
+								<p>1234 Somewhere Road #87257<br />
+								Nashville, TN 00000-0000</p>
+							</section>
+							<section>
+								<h3>Phone</h3>
+								<p><a href="#">(000) 000-0000</a></p>
+							</section>
+							<section>
+								<h3>Email</h3>
+								<p><a href="#">info@untitled.tld</a></p>
+							</section>
+							<section>
+								<h3>Social</h3>
+								<ul class="icons alt">
+									<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</section>
+						</section>
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

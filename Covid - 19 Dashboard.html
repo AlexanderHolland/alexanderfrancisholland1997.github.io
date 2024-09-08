@@ -1,0 +1,194 @@
+<!DOCTYPE HTML>
+<!--
+    Massively by HTML5 UP
+    html5up.net | @ajlkn
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+    <head>
+        <title>COVID-19 Dashboard</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    </head>
+    <body class="is-preload">
+
+        <!-- Wrapper -->
+        <div id="wrapper">
+
+            <!-- Header -->
+            <header id="header">
+                <a href="index - Copy.html" class="logo">Home</a>
+            </header>
+
+            <!-- Nav -->
+            <nav id="nav">
+                <ul class="links">
+                    <li><a href="https://public.tableau.com/shared/48FJ5RZB7?:display_count=n&:origin=viz_share_link">COVID-19 Dashboard</a></li>
+                </ul>
+                <ul class="icons">
+                    <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                    <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                    <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                    <li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+                </ul>
+            </nav>
+
+            <!-- Main -->
+            <div id="main">
+
+                <!-- Post -->
+                <section class="post">
+                    <header class="major">
+                        <span class="date">September 8, 2024</span>
+                        <h1>COVID-19 Dashboard</h1>
+                        <a href="https://public.tableau.com/shared/48FJ5RZB7?:display_count=n&:origin=viz_share_link" class="image main"><img src="images/Covid Dash.png" alt="Dashboard Snapshot" /></a>
+                    </header>
+                    
+                    <h3>Dashboard Link:</h3>
+                    <p><a href="https://public.tableau.com/shared/48FJ5RZB7?:display_count=n&:origin=viz_share_link">View Dashboard</a></p>
+                    
+                    <h3>SQL Link:</h3>
+                    <p><a href="https://github.com/AlexanderHolland/Portfolio-Projects/blob/main/Covid%20Portfolio.sql">View SQL Script</a></p>
+                    
+                    <p>Our project focuses on analyzing COVID-19 data to understand the impact and trends globally and by continent. The following steps outline how we derived key insights from the data using SQL.</p>
+                    
+                    <h2>Objective</h2>
+                    <p>To analyze COVID-19 data by exploring infection rates, death counts, vaccination progress, and creating visualizations to support data-driven decision-making.</p>
+                    
+                    <h2>Problem Statement</h2>
+                    <p>The analysis aims to provide insights into infection rates, death counts, and vaccination coverage across different regions. The goal is to identify trends, high-impact areas, and vaccination progress globally and by continent.</p>
+                    
+                    <h3>Key Metrics:</h3>
+                    <ul>
+                        <li><b>Total Cases:</b> Total number of COVID-19 cases reported.</li>
+                        <li><b>Total Deaths:</b> Total number of deaths due to COVID-19.</li>
+                        <li><b>Death Percentage:</b> Percentage of deaths among total cases.</li>
+                        <li><b>Contraction Percentage:</b> Percentage of the population that contracted COVID-19.</li>
+                        <li><b>Rolling People Vaccinated:</b> Cumulative count of people vaccinated over time.</li>
+                        <li><b>Percentage People Vaccinated:</b> Percentage of the population that has received at least one vaccine dose.</li>
+                    </ul>
+                    
+                    <h2>SQL Queries and Steps Followed:</h2>
+                    
+                    <h3>Initial Data Selection:</h3>
+                    <pre><code class="sql">SELECT *
+FROM COVID_DEATHS
+-- Loading and previewing the COVID-19 deaths data.</code></pre>
+                    
+                    <h3>Data Selection and Conversion:</h3>
+                    <pre><code class="sql">SELECT LOCATION, TO_DATE(DATE_, 'DD/MM/YYYY') AS ORDER_DATE, NEW_CASES, TOTAL_DEATHS, POPULATION
+FROM COVID_DEATHS
+WHERE CONTINENT IS NOT NULL
+ORDER BY LOCATION, ORDER_DATE
+-- Selecting the relevant columns and converting the date format.</code></pre>
+                    
+                    <h3>Cases vs Deaths:</h3>
+                    <pre><code class="sql">SELECT LOCATION, TO_DATE(DATE_, 'DD/MM/YYYY') AS DATE, TOTAL_CASES, TOTAL_DEATHS, 
+       (TOTAL_DEATHS / TOTAL_CASES) * 100 AS DEATH_PERCENTAGE
+FROM COVID_DEATHS
+WHERE LOCATION LIKE '%Kingdom%'
+  AND CONTINENT IS NOT NULL
+ORDER BY LOCATION, DATE
+-- Calculating the death percentage in the United Kingdom.</code></pre>
+                    
+                    <h3>Cases vs Population:</h3>
+                    <pre><code class="sql">SELECT LOCATION, TO_DATE(DATE_, 'DD/MM/YYYY') AS DATE, TOTAL_CASES, POPULATION, 
+       (TOTAL_CASES / POPULATION) * 100 AS CONTRACTION_PERCENTAGE
+FROM COVID_DEATHS
+WHERE LOCATION LIKE '%Kingdom%'
+  AND CONTINENT IS NOT NULL
+ORDER BY LOCATION, DATE
+-- Calculating the contraction percentage for the United Kingdom.</code></pre>
+                    
+                    <h3>Global Contraction Percentage:</h3>
+                    <pre><code class="sql">SELECT LOCATION, TO_DATE(DATE_, 'DD/MM/YYYY') AS DATE, TOTAL_CASES, POPULATION, 
+       (TOTAL_CASES / POPULATION) * 100 AS CONTRACTION_PERCENTAGE
+FROM COVID_DEATHS
+WHERE CONTINENT IS NOT NULL
+ORDER BY LOCATION, DATE
+-- Calculating the contraction percentage globally.</code></pre>
+                    
+                    <h3>Countries with Highest Infection Rate:</h3>
+                    <pre><code class="sql">SELECT LOCATION, POPULATION, MAX(TOTAL_CASES) AS "HIGHEST INFECTION COUNT", 
+       NVL(MAX((TOTAL_CASES / POPULATION) * 100), 0) AS "HIGHEST CONTRACTION PERCENTAGE"
+FROM COVID_DEATHS
+GROUP BY LOCATION, POPULATION
+ORDER BY "HIGHEST CONTRACTION PERCENTAGE" DESC
+-- Identify countries with the highest infection rates per population.</code></pre>
+                    
+                    <h3>Countries with Highest Death Count:</h3>
+                    <pre><code class="sql">SELECT LOCATION, NVL(MAX(TOTAL_DEATHS), 0) AS "TOTAL DEATH COUNT"
+FROM COVID_DEATHS
+WHERE CONTINENT IS NOT NULL
+GROUP BY LOCATION
+ORDER BY "TOTAL DEATH COUNT" DESC
+-- Identify countries with the highest death counts.</code></pre>
+                    
+                    <h3>Continents with Highest Death Count:</h3>
+                    <pre><code class="sql">SELECT CONTINENT, NVL(MAX(TOTAL_DEATHS), 0) AS "TOTAL DEATH COUNT"
+FROM COVID_DEATHS
+WHERE CONTINENT IS NOT NULL
+GROUP BY CONTINENT
+ORDER BY "TOTAL DEATH COUNT" DESC
+-- Analyze death counts by continent.</code></pre>
+                    
+                    <h3>Continents with Highest Infection Rate:</h3>
+                    <pre><code class="sql">SELECT CONTINENT, SUM(TOTAL_CASES) AS TOTAL_CASES, SUM(POPULATION) AS POPULATION, 
+       (SUM(TOTAL_CASES) / SUM(POPULATION)) * 100 AS "INFECTION_RATE_PERCENTAGE"
+FROM COVID_DEATHS
+WHERE CONTINENT IS NOT NULL
+GROUP BY CONTINENT
+ORDER BY "INFECTION_RATE_PERCENTAGE" DESC
+-- Analyze infection rates by continent.</code></pre>
+                    
+                    <h3>Global Deaths and Death Percentage:</h3>
+                    <pre><code class="sql">SELECT SUM(NEW_CASES) AS TOTAL_CASES, SUM(NEW_DEATHS) AS TOTAL_DEATHS, 
+       (SUM(NEW_DEATHS) / SUM(NEW_CASES)) * 100 AS DEATH_PERCENTAGE
+FROM COVID_DEATHS
+WHERE CONTINENT IS NOT NULL
+-- Calculate global deaths and death percentage.</code></pre>
+                    
+                    <h3>Vaccination Data:</h3>
+                    <pre><code class="sql">SELECT DATE, SUM(TOTAL_VACCINATIONS) AS ROLLING_PEOPLE_VACCINATED, 
+       (SUM(TOTAL_VACCINATIONS) / SUM(POPULATION)) * 100 AS PERCENTAGE_PEOPLE_VACCINATED
+FROM COVID_VACCINATIONS
+GROUP BY DATE
+ORDER BY DATE
+-- Analyze vaccination progress over time.</code></pre>
+
+                    <h2>Snapshot of Dashboard (Tableau):</h2>
+                    
+                
+					<a href="https://public.tableau.com/shared/48FJ5RZB7?:display_count=n&:origin=viz_share_link" class="image main"><img src="images/Covid Dash.png" alt="Dashboard Snapshot" /></a>
+                   
+
+                    <h3>Insights:</h3>
+                    <ul>
+                        <li><b>Busiest Day:</b> Friday had the highest number of COVID-19 cases and deaths.</li>
+                        <li><b>Busiest Month:</b> July saw the most cases and deaths, reflecting a significant impact.</li>
+                        <li><b>Continent Insights:</b> Continent-specific data shows varying infection and death rates, highlighting regions with higher impacts.</li>
+                        <li><b>Vaccination Progress:</b> Data shows the percentage of vaccinated individuals over time.</li>
+                    </ul>
+
+                    <h3>Summary:</h3>
+                    <p>This project provides an in-depth analysis of COVID-19 data, offering valuable insights into infection rates, death counts, and vaccination progress globally and by continent. The data-driven approach supports effective decision-making and public health strategies.</p>
+
+                </section>
+                
+            </div>
+
+
+
+        </div>
+
+        <!-- Scripts -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+
+    </body>
+</html>

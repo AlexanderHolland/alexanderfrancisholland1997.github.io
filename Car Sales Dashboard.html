@@ -1,0 +1,337 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Generic Page - Massively by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index - Copy.html" class="logo">Home</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="elements.html">Car Sales Dashboard</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<span class="date">April 25, 2017</span>
+									<h1>Car Sales Dashboard</h1>
+									<a href="https://app.powerbi.com/view?r=eyJrIjoiODE1MjVlOGItYThkMC00OWY5LWIzYzUtZGYxMzRmZGIyM2EzIiwidCI6ImQyZWNmMmFkLTQ3ZTQtNDgxMi1hODAzLWVmMGZiNGNkODBmMiJ9" class="image main"><img src="images/Dash 1.png" alt="" /></a>
+								</header>
+								<h3>Dashboard Link:</h3>
+								<p><a href="https://app.powerbi.com/view?r=eyJrIjoiODE1MjVlOGItYThkMC00OWY5LWIzYzUtZGYxMzRmZGIyM2EzIiwidCI6ImQyZWNmMmFkLTQ3ZTQtNDgxMi1hODAzLWVmMGZiNGNkODBmMiJ9">View Dashboard</a></p>
+							
+								<h3>SQL Link:</h3>
+								<p><a href="https://github.com/AlexanderHolland/Portfolio-Projects/blob/main/Car%20Sales.sql">View SQL Script</a></p>
+								
+								<p>Our company is a car dealership that sells various car models. To effectively track and analyse our sales performance, we need a comprehensive Car Sales Dashboard in Power BI.</p>
+								<h2>Objective</h2>
+								<p>The objective of this project is to design and develop a dynamic and interactive Car Sales Dashboard using Power BI. The dashboard will visualize critical KPIs related to our car sales, helping us understand our sales performance over time and make data-driven decisions.</p>
+								<h2>Problem Statement</h2>
+								<p>The dashboard should provide real-time insights into key performance indicators related to our sales data. This will enable us to make informed decisions, monitor our progress, and identify trends and opportunities for growth.</p>
+								<h3>Sales Overview:</h3>
+								<ul>
+									<li>Year-to-Date (YTD) Total Sales</li>
+									<li>Month-to-Date (MTD) Total Sales</li>
+									<li>Year-over-Year (YOY) Growth in Total Sales</li>
+									<li>Difference between YTD Sales and Previous Year-to-Date (PTYD) Sales</li>
+								</ul>
+								<h3>Average Price Analysis</h3>
+								<ul>
+									<li>YTD Average Price</li>
+									<li>MTD Average Price</li>
+									<li>YOY Growth in Average Price</li>
+									<li>Difference between YTD Average Price and PTYD Average Price</li>
+								</ul>
+								<h3>Car Sold Metrics:</h3>
+								<ul>
+									<li>YTD Cars Sold</li>
+									<li>MTD Cars Sold</li>
+									<li>YOY Growth in Cars Sold</li>
+									<li>Difference between YTD Cars Sold and PTYD Cars Sold</li>
+								</ul>
+								<h2>Problem Statement 2</h2>
+								<h3>Chart Requirement:</h3>
+								<h3>YTD Sales Weekly Trend:</h3>
+								<ul>
+									<li>Display a line chart illustrating the weekly trend of YTD sales. The X-axis should represent weeks, and the Y-axis should show the total sales amount.</li>
+								</ul>
+								<h3>YTD Total Sales by Body Style:</h3>
+								<ul>
+									<li>Visualize the distribution of YTD total sales across different car body styles using a Pie chart.</li>
+								</ul>
+								<h3>YTD Total Sales by Color:</h3>
+								<ul>
+									<li>Present the contribution of various car colors to the YTD total sales through a pie chart.</li>
+								</ul>
+								<h3>YTD Cars Sold by Dealer Region:</h3>
+								<ul>
+									<li>Showcase the YTD sales data based on different dealer regions using a map chart to visualize the sales distribution geographically.</li>
+								</ul>
+								<h3>Company-Wise Sales Trend in Grid Form:</h3>
+								<ul>
+									<li>Provide a tabular grid that displays the sales trend for each company. The grid should showcase the company name along with their YTD sales figures.</li>
+								</ul>
+								<h3>Details Grid Showing All Car Sales Information</h3>
+								<ul>
+									<li>Create a detailed grid that presents all relevant information for each car sale, including car model, body style, colour, sales amount, dealer region, date, etc</li>
+								</ul>
+								<h2>Steps followed</h2>
+								<ol>
+									<li><h3>Data Quality Check/Data Cleaning</h3></li>
+									<ol>
+										<li><h4>Applied Steps:</h4></li>
+										<ol>
+											<li><b>Check Data Quality:</b> Utilize the "Applied Steps" pane in Power Query Editor to review any existing transformations made to the dataset, such as removing null values, filtering rows, and replacing values.</li>
+											<li><b>Replace Values:</b> Uitlized power Query to replace values in column 'engine type' to standardize data.</li>
+										</ol>
+									
+									</ol>
+									<img src="Images/Replace.jpg" alt="Replaced Values">
+									<li><h3>View the Quality of the Data</h3></li>
+									
+										<ol>
+											<li><b>Column Quality:</b> Use the "Column Quality" feature to ensure that the "Valid" metric is 100%, meaning there are no empty or null values.</li>
+											<li><b>Column Distribution:</b> Check the distribution of data in each column to identify any anomalies or outliers.</li>
+										</ol>
+									<li><h3>Create a Date Table</h3></li>
+										<ol>
+											<li><h4>Creating Date Table:</h4></li>
+											<ol>
+												<li>Use DAX to create a Calendar table for time intelligence operations:</li>
+													<ol>
+														<li>Calendar Table = CALENDAR(MIN('car_data'[Date]), MAX('car_data'[Date]))</li>
+													</ol>
+												<li>Additional columns such as "Month Name" and "Week of Year" should also be created using appropriate DAX functions.</li>	
+													<ol>
+														<li>Year = YEAR('Calendar Table'[Date])</li>
+														<li>Month = FORMAT('Calendar Table'[Date],"MMMM")</li>
+														<li>Week = WEEKNUM('Calendar Table'[Date])</li>
+													</ol>	
+											</ol>
+										</ol>
+									<li><h3>Data Modeling</h3></li>
+										<ol>
+											<li>Build Relationships: Establish relationships in the data model by connecting the Date Table to the main car sales table using a one-to-many relationship on the date fields.</il>
+										</ol>
+									<img src="Images/Data Modelling.png" alt="Replaced Values">
+									<li><h3>Creating KPIs and Measures</h3></li>
+										<h3>Year to Date Sales</h3>
+										<ul>
+											<li><b>YTD Total Sales:</b> YTD Total Sales = TOTALYTD(SUM(car_data[Price ($)]),'Calendar Table'[Date])</li>
+											<li><b>MTD Total Sales:</b> MTD Total Sales = TOTALMTD(SUM(car_data[Price ($)]),'Calendar Table'[Date])</li>
+											<li><b>YoY Growth in Total Sales:</b> YoY Sales Growth = [Sales Difference] / [PYTD Total Sales]</li>
+											<li><b>Sales Difference: </b> Sales Difference = [YTD Total Sales] - [PYTD Total Sales]</li>
+											<li><b>Dynamic Sales Growth Indicator:</b> Sales Difference Colour = IF([Sales Difference] > 0, "Green", "Bad")</li>
+											<li><b>Concatenate MTD Sales:</b> MTD KPI = CONCATENATE("MTD Total Sales: ", FORMAT('car_data'[MTD Total Sales]/1000000, "$0.00M"))</li>
+										</ul>
+										<img src="images/Total Sales.png" alt="Replaced Values">		
+										<br></br>
+								<h3>Year to Date Average Price</h3>
+<ul>
+    <li>YTD Average Price: <code>YTD Avg Price = TOTALYTD([Avg Price], 'Calendar Table'[Date])</code></li>
+    <li>MTD Average Price: <code>MTD Avg Price = TOTALMTD([Avg Price], 'Calendar Table'[Date])</code></li>
+    <li>YOY Growth in Average Price: <code>YoY Average Price Growth = [Avg Price Diff] / [PYTD Avg Price]</code></li>
+    <li>Difference between YTD Average Price and PTYD Average Price: <code>Avg Price Diff = [YTD Avg Price] - [PYTD Avg Price]</code></li>
+    <li>Concatenate MTD Avg Price: <code>MTD Avg KPI = CONCATENATE("MTD Avg Sales: ", FORMAT([MTD Avg Price]/1000, "$0.00K"))</code></li>
+</ul>
+<img src="images/YTD Avg Price.jpg" alt="Replaced Values">
+<br></br>
+<h3>Year to Date Cars Sold</h3>
+<ul>
+    <li>YTD Cars Sold: <code>YTD Cars Sold = TOTALYTD(COUNT(car_data[Car_id]), 'Calendar Table'[Date])</code></li>
+    <li>MTD Cars Sold: <code>MTD Cars Sold = TOTALMTD(COUNT(car_data[Car_id]), 'Calendar Table'[Date])</code></li>
+    <li>YOY Growth in Cars Sold: <code>YoY Cars Sold Growth = [Cars Sold Diff] / [PYTD Cars Sold]</code></li>
+    <li>Difference between YTD Cars Sold and PTYD Cars Sold: <code>Cars Sold Diff = [YTD Cars Sold] - [PYTD Cars Sold]</code></li>
+    <li>Concatenate MTD Cars Sold: <code>MTD Cars Sold KPI = CONCATENATE("MTD Cars Sold: ", FORMAT([MTD Cars Sold]/1000, "0.00K"))</code></li>
+</ul>
+<img src="images/Car Sold.png" alt="Replaced Values">
+<br></br>
+
+<h2>Visualizations and Charts</h2>
+<ul>
+    <li><b>YTD Sales Weekly Trend:</b> Create a line chart with weeks on the X-axis and total YTD sales on the Y-axis.
+        <ul>
+            <li>Use DAX to highlight the max point: `Max Point on Chart = IF(MAXX(ALLSELECTED('Calendar Table'[Week]), [Total Sales]) = [Total Sales], MAXX(ALLSELECTED('Calendar Table'[Week]), [Total Sales]), BLANK())`</li>
+        </ul>
+    </li>
+    <img src="images/Area Chart.png" alt="Replaced Values">
+
+    <li><b>YTD Total Sales by Body Style:</b> Use a Pie chart to visualize sales distribution across different car body styles.</li>
+    <img src="images/Body Style.png" alt="Replaced Values">
+
+    <li><b>YTD Total Sales by Color:</b> Use a Pie chart to visualize sales distribution across different car colors.</li>
+    <img src="images/Colour.png" alt="Donut 2">
+
+    <li><b>YTD Cars Sold by Dealer Region:</b> Utilize a map chart to showcase YTD sales geographically by dealer region.</li>
+    <img src="images/Map.png" alt="Replaced Values">
+    <li><b>Company-Wise Sales Trend:</b> Present a grid showing the YTD sales for each company.</li>
+    <img src="images/Matrix.png" alt="Matrix">
+
+    <li><b>Detailed Grid of Car Sales:</b> Create a grid displaying detailed information for each car sale, including model, body style, color, sales amount, dealer region, date, etc.</li>
+    <img src="images/Table.jpg" alt="Table">
+</ul>
+
+<h2>Snapshot of Dashboard (Power BI Desktop)</h2>
+<p><b>Overview:</b></p>
+<img src="images/Dash 1.png" alt="Dash 1">
+<p><b>Details:</b></p>
+<img src="images/Dash 2.jpg" alt="Dash 2">
+<br></br>
+<h2>Insights</h2>
+<h3>Year-to-Date (YTD) Sales Performance Overview</h3>
+<ul>
+    <li><b>Total YTD Sales:</b> $371.2 million</li>
+    <ul>
+        <li><b>Increase from Previous Year:</b> $70.8 million (+23.59%)</li>
+    </ul>
+
+    <li><b>YTD Average Price:</b> $28,000</li>
+    <ul>
+        <li><b>Change from Last Year:</b> Decrease of $200 (–0.79%)</li>
+    </ul>
+
+    <li><b>YTD Cars Sold:</b> 13,300 units</li>
+    <ul>
+        <li><b>Increase from Last Year:</b> 2,600 units (+24.7%)</li>
+    </ul>
+</ul>
+
+<h3>Weekly Sales Highlights</h3>
+<ul>
+    <li><b>Highest Sales Week (36th Week of 2023):</b> 
+        <ul>
+            <li><b>Total Sales:</b> $14.9 million</li>
+        </ul>
+    </li>
+
+    <li><b>Consistently High Sales:</b> 
+        <ul>
+            <li>From Week 45 to Week 52 in the last quarter of the year.</li>
+        </ul>
+    </li>
+</ul>
+
+<h3>Top 3 Sales Regions</h3>
+<ol>
+    <li><b>Austin:</b> Cars Sold: 2,296 units</li>
+    <li><b>Janesville:</b> Cars Sold: 2,113 units</li>
+    <li><b>Scottsdale:</b> Cars Sold: 1,912 units</li>
+</ol>
+
+<h3>Top 3 Body Styles</h3>
+<ul>
+    <li><b>SUV:</b> 29% of YTD sales</li>
+    <li><b>Hatchback:</b> 22% of YTD sales</li>
+    <li><b>Sedan:</b> 20% of YTD sales</li>
+</ul>
+
+<h3>Top 3 Car Colors</h3>
+<ul>
+    <li><b>Pale White:</b> 47% of YTD sales</li>
+    <li><b>Black:</b> Significant contributor</li>
+    <li><b>Red:</b> Significant contributor</li>
+</ul>
+
+								
+
+
+								
+							</section>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section>
+							<form method="post" action="#">
+								<div class="fields">
+									<div class="field">
+										<label for="name">Name</label>
+										<input type="text" name="name" id="name" />
+									</div>
+									<div class="field">
+										<label for="email">Email</label>
+										<input type="text" name="email" id="email" />
+									</div>
+									<div class="field">
+										<label for="message">Message</label>
+										<textarea name="message" id="message" rows="3"></textarea>
+									</div>
+								</div>
+								<ul class="actions">
+									<li><input type="submit" value="Send Message" /></li>
+								</ul>
+							</form>
+						</section>
+						<section class="split contact">
+							<section class="alt">
+								<h3>Address</h3>
+								<p>1234 Somewhere Road #87257<br />
+								Nashville, TN 00000-0000</p>
+							</section>
+							<section>
+								<h3>Phone</h3>
+								<p><a href="#">(000) 000-0000</a></p>
+							</section>
+							<section>
+								<h3>Email</h3>
+								<p><a href="#">info@untitled.tld</a></p>
+							</section>
+							<section>
+								<h3>Social</h3>
+								<ul class="icons alt">
+									<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</section>
+						</section>
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
